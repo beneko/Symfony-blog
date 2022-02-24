@@ -33,8 +33,8 @@ class BlogController extends AbstractController
     /**
      * @Route("blog/{id}", name="blog_show")
      */
-    public function show($id, ArticleRepository $repo){
-        $article = $repo->find($id);
+    public function show(Article $article){
+        
         return $this->render('blog/show.html.twig',[
             'article' => $article
         ]);

@@ -5,41 +5,15 @@
 {% block body %}
 
     <section>
-        <article class="py-3">
-            <img src="https://via.placeholder.com/350x200" alt="" class="img-thumbnails">
-            <h2>Titre de l'article</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus consectetur molestiae enim vero eveniet, nam esse libero reiciendis assumenda itaque ea consequatur! Voluptate iure voluptatibus quidem aliquam totam eveniet maxime illo. Nostrum incidunt, fuga reiciendis voluptates autem architecto ea praesentium explicabo impedit recusandae voluptate aspernatur ut neque id odio nisi.</p>
-            <div class="metadata">Ecrit le 24/02/2022 à 18:00 by Autor</div>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary my-2">Lire la suite</a>
-        </article>
-        <article class="py-3">
-            <img src="https://via.placeholder.com/350x200" alt="" class="img-thumbnails">
-            <h2>Titre de l'article</h2>
-            <p>Est aspernatur eum, quasi iure suscipit laudantium explicabo delectus rem. Maiores voluptatum ullam harum eos dicta dolorem eligendi aspernatur nam placeat, id ipsum corrupti consectetur ut, neque sunt aliquid facere facilis recusandae quas ratione numquam vel autem, veniam fuga? Placeat laborum laboriosam repudiandae vitae ipsa suscipit unde totam fugit eius!</p>
-            <div class="metadata">Ecrit le 24/02/2022 à 18:00 by Autor</div>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary my-2">Lire la suite</a>
-        </article>
-        <article class="py-3">
-            <img src="https://via.placeholder.com/350x200" alt="" class="img-thumbnails">
-            <h2>Titre de l'article</h2>
-            <p>At ducimus inventore atque! Nobis quo reiciendis eligendi quibusdam nemo ab modi delectus deserunt, dolorem id odit, suscipit nisi! Itaque iure sint optio dolorem, iusto molestias amet recusandae accusantium omnis doloribus quis aut exercitationem alias! Est doloremque minima odio consequatur neque, laudantium earum reprehenderit soluta. Accusamus aperiam laboriosam recusandae similique.</p>
-            <div class="metadata">Ecrit le 24/02/2022 à 18:00 by Autor</div>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary my-2">Lire la suite</a>
-        </article>
-        <article class="py-3">
-            <img src="https://via.placeholder.com/350x200" alt="" class="img-thumbnails">
-            <h2>Titre de l'article</h2>
-            <p>Eveniet inventore ab reiciendis, odit blanditiis asperiores quasi sit non ducimus, harum excepturi, corporis suscipit. Ab eius laudantium dolorum itaque voluptatum. Voluptates nihil modi culpa quia sunt, ex quam fuga quae quisquam asperiores? Asperiores dolorem rerum tempore vitae, nostrum veritatis mollitia est sapiente totam minima, quaerat sint. Reprehenderit, quam velit.</p>
-            <div class="metadata">Ecrit le 24/02/2022 à 18:00 by Autor</div>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary my-2">Lire la suite</a>
-        </article>
-        <article class="py-3">
-            <img src="https://via.placeholder.com/350x200" alt="" class="img-thumbnails">
-            <h2>Titre de l'article</h2>
-            <p>Provident, nam quibusdam voluptate nisi cum quia eius, tempora nemo aliquid dolorum sint quis minima? Eveniet ipsa velit repudiandae voluptate ipsum aperiam ratione ea, dolorem quis magni alias, incidunt magnam quas, amet quisquam culpa. Voluptas eum quaerat officiis mollitia tenetur aspernatur dignissimos delectus? Similique, deleniti dicta asperiores expedita illum consequuntur!</p>
-            <div class="metadata">Ecrit le 24/02/2022 à 18:00 by Autor</div>
-            <a href="{{ path('blog_show') }}" class="btn btn-primary my-2">Lire la suite</a>
-        </article>
+        {% for article in articles %}
+            <article class="py-3">
+                <img src="https://via.placeholder.com/350x200" alt="{{ article.titre}}" class="img-thumbnails">
+                <h2>{{ article.titre }}</h2>
+                {{ article.content  | raw }}
+                <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} by Autor</div>
+                <a href="{{path('blog_show', {'id': article.id}) }}" class="btn btn-primary my-2">Lire la suite</a>
+            </article>
+        {% endfor %}
     </section>
 
 {% endblock %}

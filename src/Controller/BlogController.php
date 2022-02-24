@@ -14,7 +14,7 @@ class BlogController extends AbstractController
     public function index(): Response
     {
         return $this->render('blog/index.html.twig', [
-            'pageTitle' => 'Blog',
+            
         ]);
     }
 
@@ -23,7 +23,14 @@ class BlogController extends AbstractController
      */
     public function home(){
         return $this->render('blog/home.html.twig',[
-            'pageTitle' => 'Bienvenue !',
+            
         ]);
+    }
+
+    /**
+     * @Route("blog/12", name="blog_show")
+     */
+    public function show(){
+        return $this->render('blog/show.html.twig');
     }
 }

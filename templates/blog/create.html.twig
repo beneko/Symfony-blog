@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{# {% form_theme form 'bootstrap_5_layout.html.twig' %} #}
+
+{% block title %}Créer un article{% endblock %}
+
+{% block body %}
+    <section class="py-5">
+        <article class="py-3">
+
+            {{ form_start(formArticle) }}
+
+            {{ form_row(formArticle.titre, {'attr': {'placeholder': 'Titre de l\'article'}}) }}
+            {{ form_row(formArticle.content, {'attr': {'placeholder': 'Contenu de l\'article'}}) }}
+            {{ form_row(formArticle.image, {'attr': {'placeholder': 'l\'URL de l\'image'}}) }}
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+            {{ form_end(formArticle) }}
+
+        </article>
+    </section>
+{% endblock body %}
